@@ -1,8 +1,7 @@
 pipeline {
-    agent { label 'docker' }
-
-    environment {
-        DOCKER_BUILDKIT = '1'
+    agent { 
+        
+        label 'docker'
     }
 
     stages {
@@ -17,6 +16,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
+                    env.DOCKER_BUILDKIT = 1
                     sh 'docker run -e CI=true mostafaanwar862004/docker-react npm run test'
                 }
             }
