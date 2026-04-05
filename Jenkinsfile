@@ -3,8 +3,6 @@ pipeline {
         label 'docker'
     }
 
-
-
     environment {
         DOCKER_BUILDKIT = '1'
     }
