@@ -20,7 +20,6 @@ jobs:
 
       - name: Build image
         run: docker build -t mostafaanwar862004/react-test -f Dockerfile.dev .
-
       - name: Run tests
         run: docker run -e CI=true mostafaanwar862004/react-test npm run test
 
@@ -38,4 +37,4 @@ jobs:
          environment_name: mostafa-env
          version_label: github-${{ github.sha }}
          region: us-east-1
-        deployment_package: deploy.zip
+         deployment_package: deploy.zip
