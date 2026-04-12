@@ -31,9 +31,9 @@ jobs:
         uses: einaregilsson/beanstalk-deploy@v21
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: Mostafa
-          environment_name: mostafa-env
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          application_name: "Mostafa"
+          environment_name: "mostafa-env"
           version_label: github-${{ github.sha }}
           region: us-east-1
           deployment_package: deploy.zip
