@@ -23,6 +23,18 @@ jobs:
 
       - name: Run tests
         run: docker run -e CI=true mostafaanwar862004/react-test npm run test
+      
+      - name: Build images to Docker Hub
+        run: docker build -t mostafaanwar862004/multi-client ./client
+        run: docker build -t mostafaanwar862004/multi-nginx ./nginx
+        run: docker build -t mostafaanwar862004/multi-server ./server
+        run: docker build -t mostafaanwar862004/multi-worker ./worker
+       
+      - name: Push to Docker Hub 
+        run: docker push mostafaanwar862004/multi-client
+        run: docker push mostafaanwar862004/multi-nginx
+        run: docker push mostafaanwar862004/multi-server
+        run: docker push mostafaanwar862004/multi-worker
 
 # - name: Create deployment package
 #   run: zip -r deploy.zip . -x '*.git*'
