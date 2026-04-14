@@ -18,29 +18,19 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build image
-        run: docker build -t mostafaanwar862004/react-test -f Dockerfile.dev .
+      - run: docker build -t mostafaanwar862004/react-test -f Dockerfile.dev .
 
-      - name: Run tests
-        run: docker run -e CI=true mostafaanwar862004/react-test npm run test
+      - run: docker run -e CI=true mostafaanwar862004/react-test npm run test
       
-      - name: Build client image to Docker Hub
-        run: docker build -t mostafaanwar862004/multi-client ./client
-      - name: Build nginx image to Docker Hub
-        run: docker build -t mostafaanwar862004/multi-nginx ./nginx
-      - name: Build server image to Docker Hub
-        run: docker build -t mostafaanwar862004/multi-server ./server
-      - name: Build worker image to Docker Hub
-        run: docker build -t mostafaanwar862004/multi-worker ./worker
-       
-      - name: Push client image to Docker Hub
-        run: docker push mostafaanwar862004/multi-client
-      - name: Push nginx image to Docker Hub
-        run: docker push mostafaanwar862004/multi-nginx
-      - name: Push server image to Docker Hub
-        run: docker push mostafaanwar862004/multi-server
-      - name: Push worker image to Docker Hub
-        run: docker push mostafaanwar862004/multi-worker
+      - run: docker build -t mostafaanwar862004/multi-client -f ./microservices/Client
+      - run: docker build -t mostafaanwar862004/multi-server -f ./microservices/Server
+      - run: docker build -t mostafaanwar862004/multi-nginx -f ./microservices/Nginx
+      - run: docker build -t mostafaanwar862004/multi-worker -f ./microservices/Worker
+
+      - run: docker push mostafaanwar862004/multi-client
+      - run: docker push mostafaanwar862004/multi-server
+      - run: docker push mostafaanwar862004/multi-nginx
+      - run: docker push mostafaanwar862004/multi-worker
 
 # - name: Create deployment package
 #   run: zip -r deploy.zip . -x '*.git*'
