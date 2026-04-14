@@ -34,7 +34,7 @@ jobs:
 
 # - name: Create deployment package
 #   run: zip -r deploy.zip . -x '*.git*'
-#
+#   ls -la deploy.zip
 # - name: Deploy over AWS using EB services
 #   uses: einaregilsson/beanstalk-deploy@v21
 #   with:
