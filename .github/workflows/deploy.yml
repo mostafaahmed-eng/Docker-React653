@@ -22,10 +22,10 @@ jobs:
 
       - run: docker run -e CI=true mostafaanwar862004/react-test npm run test
       
-      - run: docker build -t mostafaanwar862004/multi-client -f ./Client/Dockerfile .
-      - run: docker build -t mostafaanwar862004/multi-server -f ./Server/Dockerfile .
-      - run: docker build -t mostafaanwar862004/multi-nginx -f ./Nginx/Dockerfile .
-      - run: docker build -t mostafaanwar862004/multi-worker -f ./Worker/Dockerfile .
+      - run: docker build -t mostafaanwar862004/multi-client -f ./microservices/Client
+      - run: docker build -t mostafaanwar862004/multi-server -f ./microservices/Server
+      - run: docker build -t mostafaanwar862004/multi-nginx -f ./microservices/Nginx
+      - run: docker build -t mostafaanwar862004/multi-worker -f ./microservices/Worker
 
       - run: docker push mostafaanwar862004/multi-client
       - run: docker push mostafaanwar862004/multi-server
